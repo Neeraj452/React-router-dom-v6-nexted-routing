@@ -1,16 +1,17 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import {  Outlet, useLocation } from "react-router-dom";
+import ProductNavigation from "../../common/ProductNavigation";
+import Breadcrumbs from "../../common/Breadscum";
 
 function Products() {
+  const location = useLocation();
+  console.log(location.pathname)
+
   return (
     <div className="products">
-      <div className="productsNav">
-        <Link to="/products/search"> Search </Link>
-        <Link to="/products/list"> List </Link>
-        <Link to="/products/add"> Add </Link>
-      </div>
-
-      <Outlet />
+    <Breadcrumbs/>
+       <ProductNavigation/>
+        <Outlet />
     </div>
   );
 }

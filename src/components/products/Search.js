@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 function Search() {
   return (
@@ -15,6 +16,7 @@ function Search() {
           </button>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }

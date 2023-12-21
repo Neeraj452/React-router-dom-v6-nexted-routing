@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Products from "./components/products/Products";
@@ -11,22 +11,21 @@ import ListProducts from "./components/products/ListProducts";
 function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/"> Home </Link>
-        <Link to="login"> Login </Link>
-        <Link to="products/search"> Products </Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="products" element={<Products />}>
-          <Route path="search" element={<Search />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="login" element={<Login />} />
+      <Route path="products" element={<Products />}>
+        <Route path="search" element={<Search />}>
+          {/* Nested routes for the search route */}
           <Route path="list" element={<ListProducts />} />
-          <Route path="add" element={<AddProduct />} />
-          <Route path=":id" element={<ProductDisplay />} />
+          {/* Add more nested routes here if needed */}
         </Route>
-      </Routes>
-    </Router>
+        <Route path="add" element={<AddProduct />} />
+        <Route path=":id" element={<ProductDisplay />} />
+      </Route>
+    </Routes>
+  </Router>
+  
   );
 }
 
